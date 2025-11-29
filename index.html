@@ -47,7 +47,7 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      opacity: 0.45; /* 0.55 → 0.45 */
+      opacity: 0.45;
       background-image:
         repeating-linear-gradient(
           0deg,
@@ -124,11 +124,11 @@
       padding: 0 1.25rem 3.5rem;
     }
 
-    /* BANDE MARRON pleine largeur, bords carrés */
+    /* BANDE MARRON pleine largeur, bords carrés, occupe tout le 1er écran */
     .hero-band {
       background: #241311;
-      padding: 2.5rem 0 3rem;
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35); /* 0.7 → 0.35 */
+      padding: 2.5rem 0 2.5rem;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
       border-radius: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 
@@ -137,6 +137,11 @@
       width: 100vw;
       margin: 0 0 3rem;
       margin-left: -50vw;
+
+      min-height: calc(100vh - 70px); /* occupe le premier écran sous le header */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .hero {
@@ -188,7 +193,7 @@
       background: linear-gradient(135deg, #6b3030, #8f5554);
       color: #fff5ec;
       border: 1px solid rgba(255, 232, 221, 0.1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); /* 0.75 → 0.35 */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
     }
 
     .hero-buttons a.secondary {
@@ -200,7 +205,7 @@
 
     .hero-buttons a:hover {
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45); /* 0.85 → 0.45 */
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
     }
 
     .hero-preview {
@@ -209,7 +214,7 @@
       border: 1px solid rgba(219, 182, 169, 0.5);
       background: radial-gradient(circle at top, #35201c, #231311);
       padding: 0.75rem;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4); /* 0.85 → 0.4 */
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
     }
 
     .hero-preview img {
@@ -219,6 +224,23 @@
       border-radius: 0;
       object-fit: cover;
       filter: sepia(0.35) contrast(0.9) saturate(0.75);
+    }
+
+    /* Teaser "ŒUVRES" en bas de la bande marron */
+    .hero-teaser {
+      max-width: 1024px;
+      margin: 2.5rem auto 0;
+      padding: 1.1rem 1.25rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.82rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(244, 223, 210, 0.72);
+      text-align: right;
+    }
+
+    .hero-teaser span {
+      opacity: 0.9;
     }
 
     .section-title {
@@ -244,7 +266,7 @@
       background: linear-gradient(
         to bottom,
         #241311 0%,
-        rgba(24, 15, 14, 0.7) 40%,  /* 0.9 → 0.7 */
+        rgba(24, 15, 14, 0.7) 40%,
         transparent 100%
       );
       pointer-events: none;
@@ -276,14 +298,14 @@
       aspect-ratio: 1 / 1;
       background: #211210;
       border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4); /* 0.8 → 0.4 */
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
       transition: transform 0.23s ease, box-shadow 0.23s ease, border-color 0.23s ease;
       cursor: pointer;
     }
 
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55); /* 0.9 → 0.55 */
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
       border-color: rgba(255, 255, 255, 0.14);
     }
 
@@ -301,7 +323,7 @@
       padding: 0.8rem 0.9rem 0.95rem;
       background: linear-gradient(
         to top,
-        rgba(5, 3, 3, 0.78),  /* 0.95 → 0.78 */
+        rgba(5, 3, 3, 0.78),
         rgba(5, 3, 3, 0)
       );
       color: #f7ece2;
@@ -342,12 +364,12 @@
     }
 
     .contact-box {
-      background: rgba(18, 11, 10, 0.94); /* un peu plus clair */
+      background: rgba(18, 11, 10, 0.94);
       border-radius: 0;
       padding: 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
       font-size: 0.9rem;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35); /* 0.9 → 0.35 */
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
       color: #e8d9ce;
     }
 
@@ -388,6 +410,10 @@
       transition-delay: 0.22s;
     }
 
+    .reveal-delay-3 {
+      transition-delay: 0.32s;
+    }
+
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
@@ -404,6 +430,7 @@
       .hero-band {
         margin: 2rem 0 2.5rem;
         border-radius: 0;
+        min-height: calc(100vh - 60px);
       }
 
       .about {
@@ -429,7 +456,7 @@
     </header>
 
     <main>
-      <!-- hero-band révèle au scroll -->
+      <!-- hero-band = tout le 1er écran -->
       <section class="hero-band reveal">
         <div class="hero">
           <div>
@@ -448,12 +475,17 @@
             <img src="https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg" alt="Illustration florale" />
           </div>
         </div>
+
+        <div class="hero-teaser">
+          <span>ŒUVRES</span>
+        </div>
       </section>
 
       <section id="work" class="reveal reveal-delay-1">
         <h2 class="section-title">Sélection d’illustrations</h2>
         <div class="gallery">
-          <article class="card">
+          <!-- Chaque œuvre a maintenant sa propre animation reveal -->
+          <article class="card reveal">
             <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Illustration 1" />
             <div class="card-content">
               <h3 class="card-title">Rose Garden</h3>
@@ -461,7 +493,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card reveal reveal-delay-1">
             <img src="https://images.pexels.com/photos/1040150/pexels-photo-1040150.jpeg" alt="Illustration 2" />
             <div class="card-content">
               <h3 class="card-title">Soft Bloom</h3>
@@ -469,7 +501,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card reveal reveal-delay-2">
             <img src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg" alt="Illustration 3" />
             <div class="card-content">
               <h3 class="card-title">Velvet Petals</h3>
@@ -477,7 +509,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Illustration 4" />
             <div class="card-content">
               <h3 class="card-title">Blush Fields</h3>
@@ -485,7 +517,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card reveal reveal-delay-1">
             <img src="https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg" alt="Illustration 5" />
             <div class="card-content">
               <h3 class="card-title">Crimson Bouquet</h3>
@@ -493,7 +525,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card reveal reveal-delay-2">
             <img src="https://images.pexels.com/photos/931159/pexels-photo-931159.jpeg" alt="Illustration 6" />
             <div class="card-content">
               <h3 class="card-title">Petals & Light</h3>
@@ -541,7 +573,7 @@
   </div>
 
   <script>
-    // Révélation progressive des sections au scroll
+    // Révélation progressive des sections et des cartes au scroll
     (function () {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {

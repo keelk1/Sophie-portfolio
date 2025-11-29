@@ -105,21 +105,23 @@
       padding: 0 1.25rem 3.5rem;
     }
 
-    /* BANDE MARRON pleine largeur */
-    .hero-band {
-      background: #241311;
-      padding: 2.5rem 0 3rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-      border-radius: 0 0 1.8rem 1.8rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+/* BANDE MARRON pleine largeur */
+.hero-band {
+  background: #241311;
+  padding: 2.5rem 0 3rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 1.8rem 1.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 
-      /* section full-bleed à l'intérieur d'un container centré */
-      position: relative;
-      left: 50%;
-      width: 100vw;
-      margin: 2.3rem 0 3rem;
-      margin-left: -50vw;
-    }
+  /* section full-bleed à l'intérieur d'un container centré */
+  position: relative;
+  left: 50%;
+  width: 100vw;
+
+  /* AVANT : margin: 2.3rem 0 3rem;  → créait le trou */
+  margin: 0 0 3rem; /* plus de marge en haut : la bande marron touche la bannière noire */
+  margin-left: -50vw;
+}
 
     .hero {
       max-width: 1024px;

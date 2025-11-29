@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Portfolio d'art – Raquel</title>
+  <title>Art portfolio – Raquel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     * {
@@ -12,17 +12,17 @@
     }
 
     html {
-      scroll-behavior: smooth; /* scroll fluide vers les ancres */
+      scroll-behavior: smooth; /* smooth scroll to anchors */
     }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #f1e4d7; /* beige clair */
-      background: #140e0d; /* fond très sombre */
+      color: #f1e4d7; /* light beige */
+      background: #140e0d; /* very dark background */
       min-height: 100vh;
     }
 
-    /* Arrière-plan fleurs + filtre noir allégé */
+    /* Floral background + dark filter */
     .bg {
       position: fixed;
       inset: 0;
@@ -38,10 +38,10 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45); /* 0.65 → 0.45 */
+      background: rgba(0, 0, 0, 0.45);
     }
 
-    /* Grain couleur, un peu moins dense */
+    /* Colored grain, old paper feeling */
     .grain {
       position: fixed;
       inset: 0;
@@ -124,7 +124,7 @@
       padding: 0 1.25rem 3.5rem;
     }
 
-    /* BANDE MARRON pleine largeur, bords carrés, occupe tout le 1er écran */
+    /* Full-width brown band, sharp edges, filling first screen */
     .hero-band {
       background: #241311;
       padding: 2.5rem 0 2.5rem;
@@ -138,7 +138,7 @@
       margin: 0 0 3rem;
       margin-left: -50vw;
 
-      min-height: calc(100vh - 70px); /* occupe le premier écran sous le header */
+      min-height: calc(100vh - 70px); /* first screen under header */
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -226,7 +226,7 @@
       filter: sepia(0.35) contrast(0.9) saturate(0.75);
     }
 
-    /* Teaser "ŒUVRES" en bas de la bande marron */
+    /* "WORKS" teaser at the bottom of the brown band */
     .hero-teaser {
       max-width: 1024px;
       margin: 2.5rem auto 0;
@@ -250,7 +250,7 @@
       color: #f3e1d5;
     }
 
-    /* Transition douce entre le hero et les œuvres */
+    /* Soft transition between hero and works */
     #work {
       position: relative;
       padding-top: 4.5rem;
@@ -272,7 +272,7 @@
       pointer-events: none;
     }
 
-    /* Grille façon Instagram */
+    /* Instagram-like grid */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -390,7 +390,7 @@
       color: #d1bfb2;
     }
 
-    /* Animations de section au scroll */
+    /* Scroll reveal animations */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -448,53 +448,53 @@
       <div class="nav-inner">
         <div class="logo">RAQUEL • ART PORTFOLIO</div>
         <nav>
-          <a href="#work">Œuvres</a>
-          <a href="#about">À propos</a>
+          <a href="#work">Works</a>
+          <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
     </header>
 
     <main>
-      <!-- hero-band = tout le 1er écran -->
+      <!-- hero-band = full first screen -->
       <section class="hero-band reveal">
         <div class="hero">
           <div>
-            <div class="hero-tags">illustration • peinture digitale • collages</div>
-            <h1 class="hero-title">Un univers doux, floral et coloré.</h1>
+            <div class="hero-tags">illustration • digital painting • collages</div>
+            <h1 class="hero-title">A soft, floral and warm universe.</h1>
             <p class="hero-subtitle">
-              Portfolio d’illustrations où le beige, le rose et le rouge se mêlent à des motifs floraux.
-              Une sélection de pièces récentes, pensées comme un feed Instagram mais sur une vraie page web.
+              A portfolio of illustrations where beige, pink and red tones blend with floral motifs.
+              A selection of recent pieces, laid out like an Instagram feed but on a dedicated web page.
             </p>
             <div class="hero-buttons">
-              <a href="#work" class="primary">Voir les œuvres</a>
-              <a href="#contact" class="secondary">Demander une commission</a>
+              <a href="#work" class="primary">View artworks</a>
+              <a href="#contact" class="secondary">Request a commission</a>
             </div>
           </div>
           <div class="hero-preview">
-            <img src="https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg" alt="Illustration florale" />
+            <img src="https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg" alt="Floral illustration" />
           </div>
         </div>
 
         <div class="hero-teaser">
-          <span>ŒUVRES</span>
+          <span>WORKS</span>
         </div>
       </section>
 
       <section id="work" class="reveal reveal-delay-1">
-        <h2 class="section-title">Sélection d’illustrations</h2>
+        <h2 class="section-title">Selected artworks</h2>
         <div class="gallery">
-          <!-- Chaque œuvre a maintenant sa propre animation reveal -->
+          <!-- Each artwork has its own reveal animation -->
           <article class="card reveal">
-            <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Illustration 1" />
+            <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Artwork 1" />
             <div class="card-content">
               <h3 class="card-title">Rose Garden</h3>
-              <div class="card-meta">Peinture digitale • 2024</div>
+              <div class="card-meta">Digital painting • 2024</div>
             </div>
           </article>
 
           <article class="card reveal reveal-delay-1">
-            <img src="https://images.pexels.com/photos/1040150/pexels-photo-1040150.jpeg" alt="Illustration 2" />
+            <img src="https://images.pexels.com/photos/1040150/pexels-photo-1040150.jpeg" alt="Artwork 2" />
             <div class="card-content">
               <h3 class="card-title">Soft Bloom</h3>
               <div class="card-meta">Illustration • 2023</div>
@@ -502,7 +502,7 @@
           </article>
 
           <article class="card reveal reveal-delay-2">
-            <img src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg" alt="Illustration 3" />
+            <img src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg" alt="Artwork 3" />
             <div class="card-content">
               <h3 class="card-title">Velvet Petals</h3>
               <div class="card-meta">Collage • 2024</div>
@@ -510,23 +510,23 @@
           </article>
 
           <article class="card reveal">
-            <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Illustration 4" />
+            <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Artwork 4" />
             <div class="card-content">
               <h3 class="card-title">Blush Fields</h3>
-              <div class="card-meta">Peinture • 2023</div>
+              <div class="card-meta">Painting • 2023</div>
             </div>
           </article>
 
           <article class="card reveal reveal-delay-1">
-            <img src="https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg" alt="Illustration 5" />
+            <img src="https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg" alt="Artwork 5" />
             <div class="card-content">
               <h3 class="card-title">Crimson Bouquet</h3>
-              <div class="card-meta">Peinture digitale • 2024</div>
+              <div class="card-meta">Digital painting • 2024</div>
             </div>
           </article>
 
           <article class="card reveal reveal-delay-2">
-            <img src="https://images.pexels.com/photos/931159/pexels-photo-931159.jpeg" alt="Illustration 6" />
+            <img src="https://images.pexels.com/photos/931159/pexels-photo-931159.jpeg" alt="Artwork 6" />
             <div class="card-content">
               <h3 class="card-title">Petals & Light</h3>
               <div class="card-meta">Illustration • 2022</div>
@@ -537,43 +537,43 @@
 
       <section id="about" class="about reveal reveal-delay-2">
         <div>
-          <h2 class="section-title">À propos</h2>
+          <h2 class="section-title">About</h2>
           <p>
-            Je suis Raquel, artiste passionné par les palettes chaudes, les fleurs et les atmosphères douces.
-            Ce portfolio est pensé comme un carnet visuel où chaque illustration raconte une petite histoire.
+            I’m Raquel, an artist drawn to warm palettes, flowers and soft atmospheres.
+            This portfolio is designed as a visual sketchbook where each illustration tells a small story.
           </p>
           <p>
-            Mon travail explore les émotions calmes, la nostalgie, et la beauté des détails.
-            Je travaille surtout en peinture digitale, mais aussi en collage et en croquis traditionnels.
+            My work explores calm emotions, nostalgia, and the beauty of small details.
+            I mostly work in digital painting, but also in collage and traditional sketches.
           </p>
           <p class="about-highlight">
-            Actuellement, je développe une série autour des fleurs et des tons rosés,
-            inspirée par les souvenirs de fin d’été et les lumières de fin de journée.
+            I’m currently developing a series around flowers and rosy tones,
+            inspired by late-summer memories and end-of-day light.
           </p>
         </div>
         <div id="contact" class="contact-box">
           <h3 style="margin-bottom: 0.75rem;">Contact</h3>
           <p>
-            Pour une commission, une collaboration ou une question, tu peux m’écrire à :
+            For a commission, a collaboration or any question, you can reach me at:
           </p>
           <p style="margin-top: 0.6rem; font-weight: 600;">
             <a href="mailto:youremail@example.com">youremail@example.com</a>
           </p>
           <p style="margin-top: 0.9rem; opacity: 0.85;">
-            Je partage aussi des croquis, WIP et stories sur Instagram,
-            n’hésite pas à me suivre pour voir les prochaines pièces.
+            I also share sketches, WIP and stories on Instagram,
+            feel free to follow me to see upcoming pieces.
           </p>
         </div>
       </section>
 
       <footer class="reveal reveal-delay-2">
-        © 2025 Raquel – Toutes les œuvres appartiennent à l’artiste.
+        © 2025 Raquel – All artworks belong to the artist.
       </footer>
     </main>
   </div>
 
   <script>
-    // Révélation progressive des sections et des cartes au scroll
+    // Progressive reveal of sections and cards on scroll
     (function () {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {

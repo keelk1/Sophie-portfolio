@@ -90,7 +90,7 @@
     .nav-inner {
       max-width: 1024px;
       margin: 0 auto;
-      padding: 0.9rem 1.25rem;
+      padding: 1.6rem 1.8rem;           /* UPDATED: ~2x taller header */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -98,18 +98,18 @@
 
     .logo {
       font-weight: 800;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;           /* UPDATED */
       text-transform: uppercase;
-      font-size: 0.8rem;
+      font-size: 0.95rem;               /* UPDATED: bigger logo text */
       color: #f3e1d5;
     }
 
     nav a {
-      margin-left: 1.25rem;
+      margin-left: 1.75rem;             /* UPDATED: more spacing */
       text-decoration: none;
       color: #d9aa9d;
-      font-size: 0.9rem;
-      opacity: 0.8;
+      font-size: 1rem;                  /* UPDATED: bigger nav links */
+      opacity: 0.85;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
@@ -127,7 +127,7 @@
     /* Full-width brown band, sharp edges, filling first screen */
     .hero-band {
       background: #241311;
-      padding: 2.5rem 0 2.5rem;
+      padding: 2.2rem 0 2.8rem;         /* UPDATED: léger ajustement */
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
       border-radius: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -138,10 +138,9 @@
       margin: 0 0 3rem;
       margin-left: -50vw;
 
-      min-height: calc(100vh - 70px); /* first screen under header */
+      min-height: calc(100vh - 110px);  /* UPDATED: header now taller */
       display: flex;
-      flex-direction: column;        /* NEW: column layout */
-      /* no justify-content here, hero will stretch with flex:1 */
+      flex-direction: column;
     }
 
     .hero {
@@ -152,11 +151,12 @@
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
       gap: 2.3rem;
       align-items: center;
-      flex: 1;                       /* NEW: takes remaining height -> vertical centering */
+      flex: 1;
+      transform: translateY(-18px);     /* UPDATED: move content slightly up */
     }
 
     .hero-title {
-      font-size: clamp(2rem, 3vw, 2.6rem);
+      font-size: clamp(2.1rem, 3.2vw, 2.8rem);  /* UPDATED: un chouïa plus grand */
       font-weight: 700;
       margin-bottom: 1rem;
       color: #f6e6d9;
@@ -171,9 +171,9 @@
     }
 
     .hero-tags {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;          /* UPDATED */
       margin-bottom: 1.1rem;
       color: #c58f84;
       opacity: 0.9;
@@ -181,8 +181,8 @@
 
     .hero-buttons a {
       display: inline-block;
-      padding: 0.7rem 1.4rem;
-      font-size: 0.9rem;
+      padding: 0.75rem 1.55rem;        /* UPDATED: boutons un peu plus grands */
+      font-size: 0.95rem;
       border-radius: 0;
       text-decoration: none;
       margin-right: 0.75rem;
@@ -230,15 +230,15 @@
     /* "WORKS" teaser at the bottom of the brown band */
     .hero-teaser {
       max-width: 1024px;
-      margin: 2.5rem auto 0;
-      padding: 1.1rem 1.25rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 1.05rem;            /* NEW: bigger text */
-      letter-spacing: 0.32em;        /* NEW: slightly more spaced */
+      margin: 2.2rem auto 0;
+      padding: 1.3rem 1.25rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1.4rem;                /* UPDATED: much bigger */
+      letter-spacing: 0.38em;           /* UPDATED: more spaced */
       text-transform: uppercase;
-      color: rgba(244, 223, 210, 0.85);
-      text-align: right;
-      margin-top: auto;              /* NEW: pushes teaser to bottom of band */
+      color: rgba(244, 223, 210, 0.9);
+      text-align: center;               /* UPDATED: recentré */
+      margin-top: auto;
     }
 
     .section-title {
@@ -415,6 +415,7 @@
     @media (max-width: 768px) {
       .hero {
         grid-template-columns: 1fr;
+        transform: translateY(-10px);   /* un peu moins fort sur mobile */
       }
 
       .hero-preview {
@@ -428,7 +429,7 @@
       .hero-band {
         margin: 2rem 0 2.5rem;
         border-radius: 0;
-        min-height: calc(100vh - 60px);
+        min-height: calc(100vh - 80px); /* ajustement mobile */
       }
 
       .about {

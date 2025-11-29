@@ -5,8 +5,13 @@
   <title>Art portfolio – Raquel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Pepita Script from Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pepita+Script&display=swap" />
+  <!-- Google Fonts: Dancing Script (style proche Pepita Script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     * {
@@ -20,7 +25,8 @@
     }
 
     body {
-      font-family: "tangerine", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Dancing Script", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /* ↑ nouvelle police par défaut */
       color: #f1e4d7; /* light beige */
       background: #140e0d; /* fallback very dark */
       min-height: 100vh;
@@ -101,7 +107,7 @@
     }
 
     .logo {
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       font-size: 0.95rem;
@@ -130,7 +136,7 @@
 
     /* Full-width burgundy band, sharp edges, filling first screen */
     .hero-band {
-      background: #2C0404;
+      background: #2C0404;              /* burgundy */
       padding: 2.2rem 0 2.8rem;
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
       border-radius: 0;
@@ -161,21 +167,22 @@
 
     .hero-title {
       font-size: clamp(2.1rem, 3.2vw, 2.8rem);
-      font-weight: 700;
+      font-weight: 600;
       margin-bottom: 1rem;
       color: #f6e6d9;
     }
 
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 1.05rem;
       max-width: 34rem;
       margin-bottom: 1.5rem;
       color: #e5d1c5;
       opacity: 0.9;
+      line-height: 1.4;
     }
 
     .hero-tags {
-      font-size: 0.82rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
       margin-bottom: 1.1rem;
@@ -186,7 +193,7 @@
     .hero-buttons a {
       display: inline-block;
       padding: 0.75rem 1.55rem;
-      font-size: 0.95rem;
+      font-size: 1rem;
       border-radius: 0;
       text-decoration: none;
       margin-right: 0.75rem;
@@ -246,7 +253,7 @@
     }
 
     .section-title {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin: 0 0 1.5rem;
       font-weight: 600;
       color: #f3e1d5;
@@ -332,13 +339,13 @@
     }
 
     .card-title {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 600;
       margin-bottom: 0.15rem;
     }
 
     .card-meta {
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       opacity: 0.85;
     }
 
@@ -351,14 +358,15 @@
     }
 
     .about p {
-      font-size: 0.95rem;
+      font-size: 1.05rem;
       opacity: 0.9;
       margin-bottom: 0.8rem;
       color: #e3d0c4;
+      line-height: 1.5;
     }
 
     .about-highlight {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       border-left: 3px solid rgba(150, 78, 71, 0.95);
       padding-left: 0.9rem;
       margin-top: 0.5rem;
@@ -370,7 +378,7 @@
       border-radius: 0;
       padding: 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.9rem;
+      font-size: 1rem;
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
       color: #e8d9ce;
     }
@@ -386,7 +394,7 @@
 
     footer {
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       opacity: 0.78;
       padding-top: 2rem;
       color: #d1bfb2;
@@ -487,7 +495,6 @@
       <section id="work" class="reveal reveal-delay-1">
         <h2 class="section-title">Selected artworks</h2>
         <div class="gallery">
-          <!-- Each artwork has its own reveal animation -->
           <article class="card reveal">
             <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Artwork 1" />
             <div class="card-content">

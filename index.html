@@ -140,8 +140,8 @@
 
       min-height: calc(100vh - 70px); /* first screen under header */
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex-direction: column;        /* NEW: column layout */
+      /* no justify-content here, hero will stretch with flex:1 */
     }
 
     .hero {
@@ -152,6 +152,7 @@
       grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
       gap: 2.3rem;
       align-items: center;
+      flex: 1;                       /* NEW: takes remaining height -> vertical centering */
     }
 
     .hero-title {
@@ -232,15 +233,12 @@
       margin: 2.5rem auto 0;
       padding: 1.1rem 1.25rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
-      font-size: 0.82rem;
-      letter-spacing: 0.26em;
+      font-size: 1.05rem;            /* NEW: bigger text */
+      letter-spacing: 0.32em;        /* NEW: slightly more spaced */
       text-transform: uppercase;
-      color: rgba(244, 223, 210, 0.72);
+      color: rgba(244, 223, 210, 0.85);
       text-align: right;
-    }
-
-    .hero-teaser span {
-      opacity: 0.9;
+      margin-top: auto;              /* NEW: pushes teaser to bottom of band */
     }
 
     .section-title {

@@ -5,7 +5,7 @@
   <title>Portfolio d'art – Raquel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-   * {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -13,12 +13,12 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #e8d8cc; /* beige clair pour le texte */
-      background: #1c1311; /* marron très sombre */
+      color: #f1e4d7; /* beige clair */
+      background: #140e0d; /* fond très sombre */
       min-height: 100vh;
     }
 
-    /* Arrière-plan fleurs + filtre NOIR plus fort */
+    /* Arrière-plan fleurs + filtre noir */
     .bg {
       position: fixed;
       inset: 0;
@@ -34,33 +34,24 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.68); /* voile noir plus dense */
-      z-index: -1;
+      background: rgba(0, 0, 0, 0.65);
     }
 
-    /* Couche de grain / texture */
+    /* Grain simple */
     .grain {
       position: fixed;
       inset: 0;
       z-index: -2;
       pointer-events: none;
       opacity: 0.35;
+      background-image: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.05) 0px,
+        rgba(255, 255, 255, 0.05) 1px,
+        transparent 1px,
+        transparent 3px
+      );
       mix-blend-mode: soft-light;
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 0.05) 0px,
-          rgba(255, 255, 255, 0.05) 1px,
-          transparent 1px,
-          transparent 3px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.18) 0px,
-          rgba(0, 0, 0, 0.18) 1px,
-          transparent 1px,
-          transparent 4px
-        );
     }
 
     .page {
@@ -72,9 +63,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(14px);
-      background: rgba(13, 8, 7, 0.92); /* bande sombre en haut */
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(12px);
+      background: rgba(10, 6, 5, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .nav-inner {
@@ -91,15 +82,15 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       font-size: 0.8rem;
-      color: #f1e1d3; /* clair mais doux */
+      color: #f3e1d5;
     }
 
     nav a {
       margin-left: 1.25rem;
       text-decoration: none;
-      color: #e0b7aa; /* rose-beige assourdi */
+      color: #d9aa9d;
       font-size: 0.9rem;
-      opacity: 0.75;
+      opacity: 0.8;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
@@ -114,12 +105,12 @@
       padding: 0 1.25rem 3.5rem;
     }
 
-    /* BANDE MARRON sombre pour toute la partie haute */
+    /* Bande marron sombre en haut */
     .hero-band {
-      background: #251411; /* marron profond */
+      background: #241311;
       margin: 2.3rem -1.25rem 3rem;
       padding: 2.5rem 1.25rem 3rem;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
       border-radius: 0 0 1.8rem 1.8rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
@@ -137,15 +128,15 @@
       font-size: clamp(2rem, 3vw, 2.6rem);
       font-weight: 700;
       margin-bottom: 1rem;
-      color: #f3e3d7;
+      color: #f6e6d9;
     }
 
     .hero-subtitle {
       font-size: 1rem;
       max-width: 34rem;
       margin-bottom: 1.5rem;
-      color: #e6d2c6;
-      opacity: 0.88;
+      color: #e5d1c5;
+      opacity: 0.9;
     }
 
     .hero-tags {
@@ -153,7 +144,7 @@
       text-transform: uppercase;
       letter-spacing: 0.12em;
       margin-bottom: 1.1rem;
-      color: #c8958a; /* rose fumé */
+      color: #c58f84;
       opacity: 0.9;
     }
 
@@ -161,4 +152,320 @@
       display: inline-block;
       padding: 0.7rem 1.4rem;
       font-size: 0.9rem;
-     
+      border-radius: 999px;
+      text-decoration: none;
+      margin-right: 0.75rem;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .hero-buttons a.primary {
+      background: linear-gradient(135deg, #6b3030, #8f5554);
+      color: #fff5ec;
+      border: 1px solid rgba(255, 232, 221, 0.1);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.75);
+    }
+
+    .hero-buttons a.secondary {
+      border: 1px solid rgba(219, 182, 169, 0.5);
+      background: rgba(23, 13, 11, 0.95);
+      color: #e0c1b3;
+    }
+
+    .hero-buttons a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-preview {
+      border-radius: 1.4rem;
+      overflow: hidden;
+      border: 1px solid rgba(219, 182, 169, 0.5);
+      background: radial-gradient(circle at top, #35201c, #231311);
+      padding: 0.75rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 1.1rem;
+      object-fit: cover;
+      filter: sepia(0.35) contrast(0.9) saturate(0.75);
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      margin: 0 0 1.5rem;
+      font-weight: 600;
+      color: #f3e1d5;
+    }
+
+    /* Grille façon Instagram */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      position: relative;
+      border-radius: 1.1rem;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: #211210;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+      transition: transform 0.23s ease, box-shadow 0.23s ease, border-color 0.23s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: sepia(0.35) contrast(0.9) saturate(0.75);
+    }
+
+    .card-content {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.8rem 0.9rem 0.95rem;
+      background: linear-gradient(to top, rgba(5, 3, 3, 0.95), rgba(5, 3, 3, 0));
+      color: #f7ece2;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .card-meta {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      align-items: flex-start;
+    }
+
+    .about p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      margin-bottom: 0.8rem;
+      color: #e3d0c4;
+    }
+
+    .about-highlight {
+      font-size: 0.85rem;
+      border-left: 3px solid rgba(150, 78, 71, 0.95);
+      padding-left: 0.9rem;
+      margin-top: 0.5rem;
+      color: #f0d2c7;
+    }
+
+    .contact-box {
+      background: rgba(18, 11, 10, 0.96);
+      border-radius: 1.1rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.9rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.9);
+      color: #e8d9ce;
+    }
+
+    .contact-box a {
+      color: #c8746f;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      opacity: 0.75;
+      padding-top: 2rem;
+      color: #d1bfb2;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-preview {
+        order: -1;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero-band {
+        margin: 2rem -1.25rem 2.5rem;
+        padding: 2rem 1.25rem 2.4rem;
+        border-radius: 0 0 1.4rem 1.4rem;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grain"></div>
+
+  <div class="page">
+    <header>
+      <div class="nav-inner">
+        <div class="logo">RAQUEL • ART PORTFOLIO</div>
+        <nav>
+          <a href="#work">Œuvres</a>
+          <a href="#about">À propos</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-band">
+        <div class="hero">
+          <div>
+            <div class="hero-tags">illustration • peinture digitale • collages</div>
+            <h1 class="hero-title">Un univers doux, floral et coloré.</h1>
+            <p class="hero-subtitle">
+              Portfolio d’illustrations où le beige, le rose et le rouge se mêlent à des motifs floraux.
+              Une sélection de pièces récentes, pensées comme un feed Instagram mais sur une vraie page web.
+            </p>
+            <div class="hero-buttons">
+              <a href="#work" class="primary">Voir les œuvres</a>
+              <a href="#contact" class="secondary">Demander une commission</a>
+            </div>
+          </div>
+          <div class="hero-preview">
+            <img src="https://images.pexels.com/photos/102129/pexels-photo-102129.jpeg" alt="Illustration florale" />
+          </div>
+        </div>
+      </section>
+
+      <section id="work">
+        <h2 class="section-title">Sélection d’illustrations</h2>
+        <div class="gallery">
+          <article class="card">
+            <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Illustration 1" />
+            <div class="card-content">
+              <h3 class="card-title">Rose Garden</h3>
+              <div class="card-meta">Peinture digitale • 2024</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.pexels.com/photos/1040150/pexels-photo-1040150.jpeg" alt="Illustration 2" />
+            <div class="card-content">
+              <h3 class="card-title">Soft Bloom</h3>
+              <div class="card-meta">Illustration • 2023</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg" alt="Illustration 3" />
+            <div class="card-content">
+              <h3 class="card-title">Velvet Petals</h3>
+              <div class="card-meta">Collage • 2024</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Illustration 4" />
+            <div class="card-content">
+              <h3 class="card-title">Blush Fields</h3>
+              <div class="card-meta">Peinture • 2023</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg" alt="Illustration 5" />
+            <div class="card-content">
+              <h3 class="card-title">Crimson Bouquet</h3>
+              <div class="card-meta">Peinture digitale • 2024</div>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="https://images.pexels.com/photos/931159/pexels-photo-931159.jpeg" alt="Illustration 6" />
+            <div class="card-content">
+              <h3 class="card-title">Petals & Light</h3>
+              <div class="card-meta">Illustration • 2022</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about">
+        <div>
+          <h2 class="section-title">À propos</h2>
+          <p>
+            Je suis Raquel, artiste passionné par les palettes chaudes, les fleurs et les atmosphères douces.
+            Ce portfolio est pensé comme un carnet visuel où chaque illustration raconte une petite histoire.
+          </p>
+          <p>
+            Mon travail explore les émotions calmes, la nostalgie, et la beauté des détails.
+            Je travaille surtout en peinture digitale, mais aussi en collage et en croquis traditionnels.
+          </p>
+          <p class="about-highlight">
+            Actuellement, je développe une série autour des fleurs et des tons rosés,
+            inspirée par les souvenirs de fin d’été et les lumières de fin de journée.
+          </p>
+        </div>
+        <div id="contact" class="contact-box">
+          <h3 style="margin-bottom: 0.75rem;">Contact</h3>
+          <p>
+            Pour une commission, une collaboration ou une question, tu peux m’écrire à :
+          </p>
+          <p style="margin-top: 0.6rem; font-weight: 600;">
+            <a href="mailto:youremail@example.com">youremail@example.com</a>
+          </p>
+          <p style="margin-top: 0.9rem; opacity: 0.85;">
+            Je partage aussi des croquis, WIP et stories sur Instagram,
+            n’hésite pas à me suivre pour voir les prochaines pièces.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        © 2025 Raquel – Toutes les œuvres appartiennent à l’artiste.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

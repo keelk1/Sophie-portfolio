@@ -5,11 +5,11 @@
   <title>Art portfolio – Raquel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts: Dancing Script (style proche Pepita Script) -->
+  <!-- Google Fonts: Inspiration -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap"
     rel="stylesheet"
   />
 
@@ -25,8 +25,8 @@
     }
 
     body {
-      font-family: "Inspiration", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      /* ↑ nouvelle police par défaut */
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /* Inspiration sera utilisée pour les éléments accentués */
       color: #f1e4d7; /* light beige */
       background: #140e0d; /* fallback very dark */
       min-height: 100vh;
@@ -107,10 +107,11 @@
     }
 
     .logo {
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
+      font-family: "Inspiration", cursive;
+      font-weight: 400;
+      font-size: 2.1rem;
+      letter-spacing: 0.08em;
+      text-transform: none;
       color: #f3e1d5;
     }
 
@@ -166,8 +167,9 @@
     }
 
     .hero-title {
-      font-size: clamp(2.1rem, 3.2vw, 2.8rem);
-      font-weight: 600;
+      font-family: "Inspiration", cursive;
+      font-size: clamp(2.4rem, 4vw, 3.1rem);
+      font-weight: 400;
       margin-bottom: 1rem;
       color: #f6e6d9;
     }
@@ -244,18 +246,20 @@
       margin: 2.2rem auto 0;
       padding: 1.3rem 1.25rem 0;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1.4rem;
-      letter-spacing: 0.38em;
+      font-family: "Inspiration", cursive;
+      font-size: 2.1rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(244, 223, 210, 0.9);
+      color: rgba(244, 223, 210, 0.95);
       text-align: center;
       margin-top: auto;
     }
 
     .section-title {
-      font-size: 1.4rem;
+      font-family: "Inspiration", cursive;
+      font-size: 2rem;
       margin: 0 0 1.5rem;
-      font-weight: 600;
+      font-weight: 400;
       color: #f3e1d5;
     }
 
@@ -339,14 +343,15 @@
     }
 
     .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.15rem;
+      font-family: "Inspiration", cursive;
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.1rem;
     }
 
     .card-meta {
       font-size: 0.85rem;
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
     .about {
@@ -457,7 +462,7 @@
   <div class="page">
     <header>
       <div class="nav-inner">
-        <div class="logo">RAQUEL • ART PORTFOLIO</div>
+        <div class="logo">Raquel – Art Portfolio</div>
         <nav>
           <a href="#work">Works</a>
           <a href="#about">About</a>
@@ -495,6 +500,7 @@
       <section id="work" class="reveal reveal-delay-1">
         <h2 class="section-title">Selected artworks</h2>
         <div class="gallery">
+          <!-- Each artwork has its own reveal animation -->
           <article class="card reveal">
             <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Artwork 1" />
             <div class="card-content">

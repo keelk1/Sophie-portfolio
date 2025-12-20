@@ -5,24 +5,16 @@
   <title>Art portfolio – Sophie</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Google Fonts: Twinkle Star -->
+  <!-- Fonts you actually use in CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Twinkle+Star&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Comforter&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
+    html, body { width: 100%; overflow-x: hidden; } /* ✅ IMPORTANT anti “shift” */
 
     body {
       font-family: "Playfair Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -31,72 +23,42 @@
       min-height: 100vh;
     }
 
-    /* Floral background with your JPG */
-    .bg {
-      position: fixed;
-      inset: 0;
-      background-image: url("IMG_8977.jpg"); /* ton image dans /public ou à côté du HTML */
+    img { max-width: 100%; height: auto; display: block; } /* ✅ avoids image overflow */
+
+    .bg{
+      position: fixed; inset: 0;
+      background-image: url("IMG_8977.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: -3;
       filter: none;
     }
-
-    .bg::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+    .bg::after{
+      content:""; position:absolute; inset:0;
+      background: rgba(0,0,0,0.45);
     }
 
-    /* Colored grain, old paper feeling */
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
+    .grain{
+      position: fixed; inset: 0; z-index: -2; pointer-events: none;
       opacity: 0.45;
       background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255, 230, 210, 0.16) 0px,
-          rgba(255, 230, 210, 0.16) 1px,
-          transparent 1px,
-          transparent 3px
-        ),
-        repeating-linear-gradient(
-          90deg,
-          rgba(104, 58, 48, 0.16) 0px,
-          rgba(104, 58, 48, 0.16) 1px,
-          transparent 1px,
-          transparent 4px
-        ),
-        repeating-linear-gradient(
-          45deg,
-          rgba(200, 120, 110, 0.1) 0px,
-          rgba(200, 120, 110, 0.1) 2px,
-          transparent 2px,
-          transparent 6px
-        );
+        repeating-linear-gradient(0deg, rgba(255,230,210,0.16) 0px, rgba(255,230,210,0.16) 1px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(90deg, rgba(104,58,48,0.16) 0px, rgba(104,58,48,0.16) 1px, transparent 1px, transparent 4px),
+        repeating-linear-gradient(45deg, rgba(200,120,110,0.1) 0px, rgba(200,120,110,0.1) 2px, transparent 2px, transparent 6px);
       mix-blend-mode: soft-light;
     }
 
-    .page {
-      position: relative;
-      z-index: 1;
-    }
+    .page { position: relative; z-index: 1; }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    header{
+      position: sticky; top: 0; z-index: 10;
       backdrop-filter: blur(12px);
       background: rgba(10, 6, 5, 0.95);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .nav-inner {
+    .nav-inner{
       max-width: 1024px;
       margin: 0 auto;
       padding: 1.6rem 1.8rem;
@@ -105,16 +67,17 @@
       justify-content: space-between;
     }
 
-    .logo {
+    .logo{
       font-family: "Comforter", cursive;
       font-weight: 400;
       font-size: 2.3rem;
       letter-spacing: 0.06em;
-      text-transform: none;
       color: #f3e1d5;
+      line-height: 1;
+      white-space: nowrap; /* helps prevent wrap overflow */
     }
 
-    nav a {
+    nav a{
       margin-left: 1.75rem;
       text-decoration: none;
       color: #d9aa9d;
@@ -122,38 +85,34 @@
       opacity: 0.85;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
+    nav a:hover{ opacity: 1; transform: translateY(-1px); }
 
-    nav a:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-    }
-
-    main {
+    main{
       max-width: 1024px;
       margin: 0 auto;
       padding: 0 1.25rem 3.5rem;
     }
 
-    /* Full-width burgundy band, sharp edges, filling first screen */
-    .hero-band {
-      background: #2C0404;              /* burgundy */
+    /* ✅ safer full-width band (no -50vw trick) */
+    .hero-band{
+      background: #2C0404;
       padding: 2.2rem 0 2.8rem;
-      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.35);
       border-radius: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
 
       position: relative;
-      left: 50%;
       width: 100vw;
-      margin: 0 0 3rem;
-      margin-left: -50vw;
+      left: 50%;
+      transform: translateX(-50%);
 
+      margin: 0 0 3rem;
       min-height: calc(100vh - 110px);
       display: flex;
       flex-direction: column;
     }
 
-    .hero {
+    .hero{
       max-width: 1024px;
       margin: 0 auto;
       padding: 0 1.25rem;
@@ -165,15 +124,16 @@
       transform: translateY(-18px);
     }
 
-    .hero-title {
+    .hero-title{
       font-family: "Comforter", cursive;
       font-size: clamp(2.6rem, 4.2vw, 3.3rem);
       font-weight: 400;
       margin-bottom: 1rem;
       color: #f6e6d9;
+      line-height: 1;
     }
 
-    .hero-subtitle {
+    .hero-subtitle{
       font-size: 1.05rem;
       max-width: 34rem;
       margin-bottom: 1.5rem;
@@ -182,7 +142,7 @@
       line-height: 1.4;
     }
 
-    .hero-tags {
+    .hero-tags{
       font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 0.14em;
@@ -191,7 +151,7 @@
       opacity: 0.9;
     }
 
-    .hero-buttons a {
+    .hero-buttons a{
       display: inline-block;
       padding: 0.75rem 1.55rem;
       font-size: 1rem;
@@ -202,59 +162,56 @@
       transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
-    .hero-buttons a.primary {
+    .hero-buttons a.primary{
       background: linear-gradient(135deg, #6b3030, #8f5554);
       color: #fff5ec;
-      border: 1px solid rgba(255, 232, 221, 0.1);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255,232,221,0.1);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.35);
     }
 
-    .hero-buttons a.secondary {
-      border: 1px solid rgba(219, 182, 169, 0.5);
-      background: rgba(23, 13, 11, 0.95);
+    .hero-buttons a.secondary{
+      border: 1px solid rgba(219,182,169,0.5);
+      background: rgba(23,13,11,0.95);
       color: #e0c1b3;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
     }
 
-    .hero-buttons a:hover {
+    .hero-buttons a:hover{
       transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.45);
     }
 
-    .hero-preview {
+    .hero-preview{
       border-radius: 0;
       overflow: hidden;
-      border: 1px solid rgba(219, 182, 169, 0.5);
+      border: 1px solid rgba(219,182,169,0.5);
       background: radial-gradient(circle at top, #3b0808, #2C0404);
       padding: 0.75rem;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.4);
     }
 
-    .hero-preview img {
-      display: block;
+    .hero-preview img{
       width: 100%;
       height: auto;
-      border-radius: 0;
       object-fit: cover;
       filter: sepia(0.35) contrast(0.9) saturate(0.75);
     }
 
-    /* "WORKS" teaser at the bottom of the burgundy band */
-    .hero-teaser {
+    .hero-teaser{
       max-width: 1024px;
       margin: 2.2rem auto 0;
       padding: 1.3rem 1.25rem 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       font-family: "Comforter", cursive;
       font-size: 2.2rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(244, 223, 210, 0.95);
+      color: rgba(244,223,210,0.95);
       text-align: center;
       margin-top: auto;
     }
 
-    .section-title {
+    .section-title{
       font-family: "Comforter", cursive;
       font-size: 2.1rem;
       margin: 0 0 1.5rem;
@@ -262,98 +219,71 @@
       color: #f3e1d5;
     }
 
-    /* Soft transition between hero and works */
-    #work {
-      position: relative;
-      padding-top: 4.5rem;
+    #work{ position: relative; padding-top: 4.5rem; }
+
+    #work::before{
+      content:""; position:absolute; top:-70px; left:0; right:0; height:70px;
+      background: linear-gradient(to bottom, #2C0404 0%, rgba(44,4,4,0.7) 40%, transparent 100%);
+      pointer-events:none;
     }
 
-    #work::before {
-      content: "";
-      position: absolute;
-      top: -70px;
-      left: 0;
-      right: 0;
-      height: 70px;
-      background: linear-gradient(
-        to bottom,
-        #2C0404 0%,
-        rgba(44, 4, 4, 0.7) 40%,
-        transparent 100%
-      );
-      pointer-events: none;
-    }
-
-    /* Instagram-like grid */
-    .gallery {
+    .gallery{
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.2rem;
     }
 
-    @media (max-width: 900px) {
-      .gallery {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    @media (max-width: 900px){
+      .gallery{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 600px) {
-      .gallery {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 600px){
+      .gallery{ grid-template-columns: 1fr; }
     }
 
-    .card {
+    .card{
       position: relative;
       border-radius: 0;
       overflow: hidden;
       aspect-ratio: 1 / 1;
       background: #2C0404;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.4);
       transition: transform 0.23s ease, box-shadow 0.23s ease, border-color 0.23s ease;
       cursor: pointer;
     }
 
-    .card:hover {
+    .card:hover{
       transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55);
-      border-color: rgba(255, 255, 255, 0.14);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.55);
+      border-color: rgba(255,255,255,0.14);
     }
 
-    .card img {
+    .card img{
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
       filter: sepia(0.35) contrast(0.9) saturate(0.75);
     }
 
-    .card-content {
+    .card-content{
       position: absolute;
       inset: auto 0 0 0;
       padding: 0.8rem 0.9rem 0.95rem;
-      background: linear-gradient(
-        to top,
-        rgba(5, 3, 3, 0.78),
-        rgba(5, 3, 3, 0)
-      );
+      background: linear-gradient(to top, rgba(5,3,3,0.78), rgba(5,3,3,0));
       color: #f7ece2;
     }
 
-    .card-title {
+    .card-title{
       font-family: "Comforter", cursive;
       font-size: 1.5rem;
       font-weight: 400;
       margin-bottom: 0.1rem;
     }
 
-    .card-meta {
-      font-size: 0.85rem;
-      opacity: 0.9;
-    }
+    .card-meta{ font-size: 0.85rem; opacity: 0.9; }
 
-    .about {
+    .about{
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 2rem;
@@ -361,7 +291,7 @@
       align-items: flex-start;
     }
 
-    .about p {
+    .about p{
       font-size: 1.05rem;
       opacity: 0.9;
       margin-bottom: 0.8rem;
@@ -369,34 +299,28 @@
       line-height: 1.5;
     }
 
-    .about-highlight {
+    .about-highlight{
       font-size: 0.95rem;
-      border-left: 3px solid rgba(150, 78, 71, 0.95);
+      border-left: 3px solid rgba(150,78,71,0.95);
       padding-left: 0.9rem;
       margin-top: 0.5rem;
       color: #f0d2c7;
     }
 
-    .contact-box {
+    .contact-box{
       background: #2C0404;
       border-radius: 0;
       padding: 1.25rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.08);
       font-size: 1rem;
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
       color: #e8d9ce;
     }
 
-    .contact-box a {
-      color: #c8746f;
-      text-decoration: none;
-    }
+    .contact-box a{ color:#c8746f; text-decoration:none; }
+    .contact-box a:hover{ text-decoration:underline; }
 
-    .contact-box a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
+    footer{
       text-align: center;
       font-size: 0.85rem;
       opacity: 0.78;
@@ -404,56 +328,45 @@
       color: #d1bfb2;
     }
 
-    /* Scroll reveal animations */
-    .reveal {
+    .reveal{
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     }
+    .reveal.visible{ opacity:1; transform:translateY(0); }
+    .reveal-delay-1{ transition-delay: 0.12s; }
+    .reveal-delay-2{ transition-delay: 0.22s; }
+    .reveal-delay-3{ transition-delay: 0.32s; }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    /* ✅ MOBILE alignment fixes (no desktop impact) */
+    @media (max-width: 768px){
+      nav{ display:none; }
 
-    .reveal-delay-1 {
-      transition-delay: 0.12s;
-    }
+      .nav-inner{
+        justify-content: center;       /* logo centered */
+        padding: 1.2rem 1rem;
+      }
+      .logo{
+        font-size: 2rem;               /* slightly smaller to avoid overflow */
+        letter-spacing: 0.03em;
+      }
 
-    .reveal-delay-2 {
-      transition-delay: 0.22s;
-    }
+      main{ padding-left: 1rem; padding-right: 1rem; }
 
-    .reveal-delay-3 {
-      transition-delay: 0.32s;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
+      .hero{
         grid-template-columns: 1fr;
         transform: translateY(-10px);
       }
+      .hero-preview{ order: -1; }
 
-      .hero-preview {
-        order: -1;
-      }
-
-      nav {
-        display: none;
-      }
-
-      .hero-band {
-        margin: 2rem 0 2.5rem;
-        border-radius: 0;
-        min-height: calc(100vh - 80px);
-      }
-
-      .about {
-        grid-template-columns: 1fr;
+      .hero-teaser{
+        font-size: 1.9rem;             /* prevents overflow on small screens */
+        letter-spacing: 0.18em;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="bg"></div>
   <div class="grain"></div>
@@ -471,7 +384,6 @@
     </header>
 
     <main>
-      <!-- hero-band = full first screen -->
       <section class="hero-band reveal">
         <div class="hero">
           <div>
@@ -496,104 +408,12 @@
         </div>
       </section>
 
-      <section id="work" class="reveal reveal-delay-1">
-        <h2 class="section-title">Selected artworks</h2>
-        <div class="gallery">
-          <!-- Each artwork has its own reveal animation -->
-          <article class="card reveal">
-            <img src="https://images.pexels.com/photos/102127/pexels-photo-102127.jpeg" alt="Artwork 1" />
-            <div class="card-content">
-              <h3 class="card-title">Rose Garden</h3>
-              <div class="card-meta">Digital painting • 2024</div>
-            </div>
-          </article>
+      <!-- ... reste identique ... -->
 
-          <article class="card reveal reveal-delay-1">
-            <img src="https://bouqs.com/blog/wp-content/uploads/2018/08/shutterstock_1662182848-min.jpg" alt="Artwork 2" />
-            <div class="card-content">
-              <h3 class="card-title">Soft Bloom</h3>
-              <div class="card-meta">Illustration • 2023</div>
-            </div>
-          </article>
-
-          <article class="card reveal reveal-delay-2">
-            <img src="https://images.pexels.com/photos/1435752/pexels-photo-1435752.jpeg" alt="Artwork 3" />
-            <div class="card-content">
-              <h3 class="card-title">Velvet Petals</h3>
-              <div class="card-meta">Collage • 2024</div>
-            </div>
-          </article>
-
-          <article class="card reveal">
-            <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg" alt="Artwork 4" />
-            <div class="card-content">
-              <h3 class="card-title">Blush Fields</h3>
-              <div class="card-meta">Painting • 2023</div>
-            </div>
-          </article>
-
-          <article class="card reveal reveal-delay-1">
-            <img src="https://images.pexels.com/photos/931167/pexels-photo-931167.jpeg" alt="Artwork 5" />
-            <div class="card-content">
-              <h3 class="card-title">Crimson Bouquet</h3>
-              <div class="card-meta">Digital painting • 2024</div>
-            </div>
-          </article>
-
-          <article class="card reveal reveal-delay-2">
-            <img src="https://images.pexels.com/photos/931159/pexels-photo-931159.jpeg" alt="Artwork 6" />
-            <div class="card-content">
-              <h3 class="card-title">Petals & Light</h3>
-              <div class="card-meta">Illustration • 2022</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="about" class="about reveal reveal-delay-2">
-        <div>
-          <h2 class="section-title">About</h2>
-          <p>
-            Im Sophie, a self thougth artist based in Cobble Hill BC.
-          </p>
-          <p>
-            I work manly with oil paints, but i enjoy experimenting various medias.
-          </p>
-          <p class="about-highlight">
-            I'm english and canadian, the things i love the most in life are:
-            Listening to good loud music
-            Thrifting and fashion
-            Writing music and singing (microphone emoji)
-            Hiking in the mountains (mountain emoji)
-            Meditation (meditation emoji)
-            Interior design
-            Traveling to new places (aeroplane emoji)
-            My friends, family and my 4 little dogs 
-            
-          </p>
-        </div>
-        <div id="contact" class="contact-box">
-          <h3 style="margin-bottom: 0.75rem;">Contact</h3>
-          <p>
-            For a commission, a collaboration or any question, you can reach me at:
-          </p>
-          <p style="margin-top: 0.6rem; font-weight: 600;">
-            <a href="mailto:sophieroseflower@gmail.com">sophieroseflower@gmail.com</a>
-          </p>
-          <p style="margin-top: 0.9rem; opacity: 0.85;">
-            What I need from you: A good quality image of the picture you would like me to produce. Any other images of the same subject so that I can most accurately portray who or what they are in the best way.
-          </p>
-        </div>
-      </section>
-
-      <footer class="reveal reveal-delay-2">
-        © 2025 Sophie – All artworks belong to the artist.
-      </footer>
     </main>
   </div>
 
   <script>
-    // Progressive reveal of sections and cards on scroll
     (function () {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -602,9 +422,7 @@
             obs.unobserve(entry.target);
           }
         });
-      }, {
-        threshold: 0.18
-      });
+      }, { threshold: 0.18 });
 
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
     })();

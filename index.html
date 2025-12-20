@@ -241,10 +241,16 @@
       content: "";
       position: absolute;
       top: -70px;
-      left: 0;
-      right: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
       height: 70px;
-      background: linear-gradient(to bottom, #2C0404 0%, rgba(44, 4, 4, 0.7) 40%, transparent 100%);
+      background: linear-gradient(
+        to bottom,
+        #2C0404 0%,
+        rgba(44, 4, 4, 0.7) 40%,
+        transparent 100%
+      );
       pointer-events: none;
     }
 

@@ -340,6 +340,33 @@
       color: #e8d9ce;
     }
 
+    /* ABOUT card (same style as contact, but light rosy) */
+    .about-box {
+      background: rgba(255, 242, 242, 0.92); /* blanc rosé léger */
+      border-radius: 0;
+      padding: 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
+      color: rgba(35, 12, 12, 0.92); /* texte foncé lisible */
+    }
+
+    /* on override les styles existants de .about p */
+    .about-box p {
+      color: rgba(35, 12, 12, 0.86);
+      opacity: 1;
+    }
+    
+    /* highlight dans la carte about */
+    .about-box .about-highlight {
+      border-left: 3px solid rgba(44, 4, 4, 0.55);
+      color: rgba(35, 12, 12, 0.88);
+    }
+    
+    /* titre About dans la carte */
+    .about-box .section-title {
+      color: rgba(44, 4, 4, 0.95);
+    }
+    
     .contact-box a { color: #c8746f; text-decoration: none; }
     .contact-box a:hover { text-decoration: underline; }
 
@@ -532,7 +559,7 @@
       </section>
 
       <section id="about" class="about reveal reveal-delay-2">
-        <div>
+        <div class="about-box">
           <h2 class="section-title">About</h2>
           <p>Im Sophie, a self thougth artist based in Cobble Hill BC.</p>
           <p>I work manly with oil paints, but i enjoy experimenting various medias.</p>

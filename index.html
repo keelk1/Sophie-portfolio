@@ -16,6 +16,12 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    .mobile-break { display: none; }
+    
+    @media (max-width: 768px) {
+      .mobile-break { display: inline; }
+    }
+
     html { scroll-behavior: smooth; }
     body {
       font-family: "Playfair Display", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -520,7 +526,10 @@
         <div class="hero">
           <div>
             <div class="hero-tags">oil painting • original works</div>
-            <h1 class="hero-title">Welcome ! Please take a look 🤠</h1>
+            <h1 class="hero-title">
+              Welcome ! <span class="mobile-break"><br></span>
+              Please take a look 🤠
+            </h1>
             <p class="hero-subtitle">
               This is my oil painting portfolio. If you’re interested in a commission, I’d love to hear from you.
             </p>

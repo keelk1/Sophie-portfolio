@@ -22,8 +22,6 @@
       color: #f1e4d7;
       background: #140e0d;
       min-height: 100vh;
-
-      /* important: évite le "décalage à droite" sur mobile */
       overflow-x: hidden;
     }
 
@@ -59,6 +57,19 @@
         repeating-linear-gradient(90deg, rgba(104, 58, 48, 0.16) 0px, rgba(104, 58, 48, 0.16) 1px, transparent 1px, transparent 4px),
         repeating-linear-gradient(45deg, rgba(200, 120, 110, 0.1) 0px, rgba(200, 120, 110, 0.1) 2px, transparent 2px, transparent 6px);
       mix-blend-mode: soft-light;
+    }
+
+    /* ✅ Scroll progress bar (hidden on desktop, enabled on mobile in media query) */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: rgba(243, 225, 213, 0.9);
+      z-index: 9999;
+      pointer-events: none;
+      display: none;
     }
 
     header {
@@ -204,7 +215,6 @@
       filter: sepia(0.35) contrast(0.9) saturate(0.75);
     }
 
-    /* WORKS teaser (fix: plus de coupe) */
     .hero-teaser {
       max-width: 1024px;
       margin: 2.2rem auto 0;
@@ -232,7 +242,6 @@
       line-height: 1.05;
     }
 
-    /* ✅ NEW: Contact title in same font as About */
     .contact-title {
       font-family: "Comforter", cursive;
       font-weight: 400;
@@ -242,7 +251,6 @@
       color: #f3e1d5;
     }
 
-    /* transition hero -> works */
     #work {
       position: relative;
       padding-top: 4.5rem;
@@ -264,7 +272,6 @@
       pointer-events: none;
     }
 
-    /* Gallery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -315,7 +322,6 @@
 
     .card-meta { font-size: 0.85rem; opacity: 0.9; }
 
-    /* About + Contact (desktop) */
     .about {
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -350,7 +356,6 @@
       color: #e8d9ce;
     }
 
-    /* ABOUT card (same style as contact, but light rosy) */
     .about-box {
       background: rgba(255, 242, 242, 0.92);
       border-radius: 0;
@@ -385,7 +390,6 @@
       color: #d1bfb2;
     }
 
-    /* reveal */
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -400,7 +404,27 @@
     .mobile-contact { display: none; }
 
     @media (max-width: 768px) {
-      nav { display: none; }
+      /* ✅ show progress bar only on mobile */
+      .scroll-progress { display: block; height: 3px; }
+
+      /* ✅ keep shortcuts on mobile (instead of hiding nav) */
+      .nav-inner{
+        padding: 1.05rem 1.1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+      nav{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      nav a{
+        margin-left: 0;
+        font-size: 0.98rem;
+        padding: 0.35rem 0.4rem;
+      }
 
       .hero-band {
         left: 0;
@@ -470,6 +494,9 @@
 <body>
   <div class="bg"></div>
   <div class="grain"></div>
+
+  <!-- ✅ Mobile scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
 
   <div class="page">
     <header>
@@ -574,7 +601,6 @@
           </p>
         </div>
 
-        <!-- Desktop contact card (normal) -->
         <div id="contact" class="contact-box desktop-contact">
           <h3 class="contact-title">Contact</h3>
           <p>For a commission, a collaboration or any question, you can reach me at:</p>
@@ -593,7 +619,6 @@
       </footer>
     </main>
 
-    <!-- Mobile Contact Drawer (languette) -->
     <details class="mobile-contact">
       <summary>
         <span>Contact</span>
@@ -615,8 +640,8 @@
   </div>
 
   <script>
-    // Progressive reveal of sections and cards on scroll
     (function () {
+      // Reveal on scroll
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -627,6 +652,19 @@
       }, { threshold: 0.18 });
 
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+      // ✅ Mobile scroll progress bar
+      const progressEl = document.querySelector(".scroll-progress");
+      function updateProgress() {
+        const doc = document.documentElement;
+        const scrollTop = doc.scrollTop || document.body.scrollTop || 0;
+        const scrollHeight = (doc.scrollHeight - doc.clientHeight) || 0;
+        const pct = scrollHeight ? (scrollTop / scrollHeight) * 100 : 0;
+        if (progressEl) progressEl.style.width = pct + "%";
+      }
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("resize", updateProgress);
+      updateProgress();
     })();
   </script>
 </body>

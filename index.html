@@ -208,7 +208,7 @@
     .hero-teaser {
       max-width: 1024px;
       margin: 2.2rem auto 0;
-      padding: 1.3rem 1.25rem 0.8rem; /* + padding bottom pour éviter clip */
+      padding: 1.3rem 1.25rem 0.8rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
 
       font-family: "Comforter", cursive;
@@ -219,7 +219,7 @@
       text-align: center;
 
       line-height: 1.15;
-      overflow: visible; /* important */
+      overflow: visible;
       margin-top: auto;
     }
 
@@ -230,6 +230,16 @@
       font-weight: 400;
       color: #f3e1d5;
       line-height: 1.05;
+    }
+
+    /* ✅ NEW: Contact title in same font as About */
+    .contact-title {
+      font-family: "Comforter", cursive;
+      font-weight: 400;
+      font-size: 2.1rem;
+      line-height: 1.05;
+      margin-bottom: 0.75rem;
+      color: #f3e1d5;
     }
 
     /* transition hero -> works */
@@ -342,31 +352,28 @@
 
     /* ABOUT card (same style as contact, but light rosy) */
     .about-box {
-      background: rgba(255, 242, 242, 0.92); /* blanc rosé léger */
+      background: rgba(255, 242, 242, 0.92);
       border-radius: 0;
       padding: 1.25rem;
       border: 1px solid rgba(255, 255, 255, 0.18);
       box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
-      color: rgba(35, 12, 12, 0.92); /* texte foncé lisible */
+      color: rgba(35, 12, 12, 0.92);
     }
 
-    /* on override les styles existants de .about p */
     .about-box p {
       color: rgba(35, 12, 12, 0.86);
       opacity: 1;
     }
-    
-    /* highlight dans la carte about */
+
     .about-box .about-highlight {
       border-left: 3px solid rgba(44, 4, 4, 0.55);
       color: rgba(35, 12, 12, 0.88);
     }
-    
-    /* titre About dans la carte */
+
     .about-box .section-title {
       color: rgba(44, 4, 4, 0.95);
     }
-    
+
     .contact-box a { color: #c8746f; text-decoration: none; }
     .contact-box a:hover { text-decoration: underline; }
 
@@ -395,7 +402,6 @@
     @media (max-width: 768px) {
       nav { display: none; }
 
-      /* IMPORTANT: hero-band full width sans "100vw" overflow sur mobile */
       .hero-band {
         left: 0;
         width: 100%;
@@ -413,7 +419,6 @@
       .about { grid-template-columns: 1fr !important; }
       .desktop-contact { display: none; }
 
-      /* Drawer (languette) */
       .mobile-contact {
         display: block;
         position: fixed;
@@ -564,7 +569,7 @@
           <p>Im Sophie, a self thougth artist based in Cobble Hill BC.</p>
           <p>I work manly with oil paints, but i enjoy experimenting various medias.</p>
           <p>I'm english and canadian🇬🇧🇨🇦, the things i love the most in life are:</p>
-                                                                                    
+
           <p class="about-highlight">
             Listening to good loud music 🎶· Thrifting and fashion 💅🏻· Writing music and singing ✍🏻🎤· Hiking in the mountains ⛰️· Meditation 🧘🏻· Interior design 🛋️· Traveling to new places 🚀· My friends 🗿, family ❤️ and my 4 little dogs 🐶.
           </p>
@@ -572,7 +577,7 @@
 
         <!-- Desktop contact card (normal) -->
         <div id="contact" class="contact-box desktop-contact">
-          <h3 style="margin-bottom: 0.75rem;">Contact</h3>
+          <h3 class="contact-title">Contact</h3>
           <p>For a commission, a collaboration or any question, you can reach me at:</p>
           <p style="margin-top: 0.6rem; font-weight: 600;">
             <a href="mailto:sophieroseflower@gmail.com">sophieroseflower@gmail.com</a>
@@ -597,7 +602,7 @@
       </summary>
 
       <div class="contact-box">
-        <h3 style="margin-bottom: 0.75rem;">Contact</h3>
+        <h3 class="contact-title">Contact</h3>
         <p>For a commission, a collaboration or any question, you can reach me at:</p>
         <p style="margin-top: 0.6rem; font-weight: 600;">
           <a href="mailto:sophieroseflower@gmail.com">sophieroseflower@gmail.com</a>

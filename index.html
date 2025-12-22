@@ -79,21 +79,17 @@
     }
 
     header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(12px);
-      background: rgba(10, 6, 5, 0.95);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: none;
     }
 
     .nav-inner {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: 1.6rem 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      margin: 0 1.25rem;              /* même "gouttière" que main */
+      padding: 1.1rem 1.25rem;         /* un peu plus compact sur mobile */
+      background: rgba(10, 6, 5, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .logo {

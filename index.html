@@ -17,9 +17,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     .mobile-break { display: none; }
-    @media (max-width: 768px) {
-      .mobile-break { display: inline; }
-    }
+    @media (max-width: 768px) { .mobile-break { display: inline; } }
 
     html { scroll-behavior: smooth; }
     body {
@@ -77,18 +75,24 @@
       display: none;
     }
 
+    /* ✅ DESKTOP: full-width top bar */
     header {
-      background: transparent;
-      backdrop-filter: none;
-      border-bottom: none;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 6, 5, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
+    /* ✅ DESKTOP: content centered inside the full-width bar */
     .nav-inner {
-      margin: 0 1.25rem;              /* même "gouttière" que main */
-      padding: 1.1rem 1.25rem;         /* un peu plus compact sur mobile */
-      background: rgba(10, 6, 5, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 1.6rem 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
@@ -408,13 +412,25 @@
       /* ✅ show progress bar only on mobile */
       .scroll-progress { display: block; height: 3px; }
 
-      /* ✅ keep shortcuts on mobile (instead of hiding nav) */
+      /* ✅ on mobile: header stays transparent, nav-inner becomes the framed bar */
+      header {
+        background: transparent;
+        border-bottom: none;
+        backdrop-filter: none;
+      }
+
       .nav-inner{
+        margin: 0 1.25rem;
         padding: 1.05rem 1.1rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 0.7rem;
+
+        background: rgba(10, 6, 5, 0.95);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
       }
+
       nav{
         display: flex;
         width: 100%;
@@ -488,12 +504,9 @@
         max-height: 70vh;
         overflow: auto;
       }
-      #work::before {
-        display: none !important;
-      }
-      #work {
-        padding-top: 2.5rem;
-      }
+
+      #work::before { display: none !important; }
+      #work { padding-top: 2.5rem; }
     }
   </style>
 </head>

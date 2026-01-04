@@ -62,7 +62,7 @@
       mix-blend-mode: soft-light;
     }
 
-    /* ✅ Scroll progress bar (hidden on desktop, enabled on mobile in media query) */
+    /* Scroll progress bar (hidden on desktop, enabled on mobile in media query) */
     .scroll-progress {
       position: fixed;
       top: 0;
@@ -75,7 +75,7 @@
       display: none;
     }
 
-    /* ✅ DESKTOP: full-width top bar */
+    /* DESKTOP: full-width top bar */
     header {
       position: sticky;
       top: 0;
@@ -85,7 +85,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* ✅ DESKTOP: content centered inside the full-width bar */
+    /* DESKTOP: content centered inside the full-width bar */
     .nav-inner {
       max-width: 1024px;
       margin: 0 auto;
@@ -205,48 +205,19 @@
 
     .hero-preview {
       border-radius: 0;
-      overflow: visible;              /* ou hidden si tu préfères */
-      border: none;                   /* ✅ enlève le contour */
-      padding: 0;                     /* ✅ enlève l’espace qui “encadre” */
-      background: transparent;        /* ✅ évite une “plaque” derrière */
+      overflow: visible;
+      border: none;
+      padding: 0;
+      background: transparent;
       box-shadow: none !important;
     }
-    
-    .about-list{
-      margin-top: 0.6rem;
-      padding-left: 1.2rem;   /* espace avant les points */
-      color: rgba(35, 12, 12, 0.86); /* même couleur que ton about-box */
-      line-height: 1.6;
-    }
-    
-    .about-list li{
-      margin: 0.25rem 0;
-    }
-        .about-list{
-      list-style: none;
-      padding-left: 0;
-    }
-    
-    .about-list li{
-      position: relative;
-      padding-left: 1.1rem;
-      margin: 0.25rem 0;
-    }
-    
-    .about-list li::before{
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0.7;
-    }
-    
+
     .hero-preview img {
       display: block;
       width: 100%;
       height: auto;
       border-radius: 0;
-      object-fit: contain;            /* ✅ montre tout le cadre PNG sans le rogner */
+      object-fit: contain;
       background: transparent;
       filter: none;
     }
@@ -374,12 +345,26 @@
       line-height: 1.6;
     }
 
-    .about-highlight {
-      font-size: 0.95rem;
-      border-left: 3px solid rgba(150, 78, 71, 0.95);
-      padding-left: 0.9rem;
-      margin-top: 0.5rem;
-      color: #f0d2c7;
+    .about-list{
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0.6rem;
+      color: rgba(35, 12, 12, 0.86);
+      line-height: 1.6;
+    }
+
+    .about-list li{
+      position: relative;
+      padding-left: 1.1rem;
+      margin: 0.25rem 0;
+    }
+
+    .about-list li::before{
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.7;
     }
 
     .contact-box {
@@ -404,11 +389,6 @@
     .about-box p {
       color: rgba(35, 12, 12, 0.86);
       opacity: 1;
-    }
-
-    .about-box .about-highlight {
-      border-left: 3px solid rgba(44, 4, 4, 0.55);
-      color: rgba(35, 12, 12, 0.88);
     }
 
     .about-box .section-title {
@@ -436,21 +416,10 @@
     .reveal-delay-2 { transition-delay: 0.22s; }
     .reveal-delay-3 { transition-delay: 0.32s; }
 
-    /* --- MOBILE fixes + Contact drawer --- */
-    .mobile-contact { display: none; }
-
+    /* MOBILE */
     @media (max-width: 768px) {
-      /* ✅ show progress bar only on mobile */
       .scroll-progress { display: block; height: 3px; }
 
-      .hero{
-        flex: 0 0 auto;        /* <- empêche le hero de remplir toute la hauteur */
-        align-content: start;  /* <- évite que les lignes du grid se "stretch" */
-        gap: 1.2rem;           /* <- réduit l’espace entre texte et photo */
-        transform: none;       /* optionnel : enlève le décalage vertical */
-      }
-      
-      /* ✅ on mobile: header stays transparent, nav-inner becomes the framed bar */
       header {
         background: transparent;
         border-bottom: none;
@@ -489,68 +458,19 @@
         min-height: calc(100vh - 80px);
       }
 
-      .hero {
+      .hero{
         grid-template-columns: 1fr;
-        transform: translateY(-10px);
-      }
-
-      .about { grid-template-columns: 1fr !important; }
-      .desktop-contact { 
-        display: block; 
-        margin-top: 1.25rem; 
-      }
-      
-      .mobile-contact { 
-        display: none; 
-      }
-
-      .mobile-contact {
-        display: block;
-        position: fixed;
-        right: 0;
-        top: 55%;
-        transform: translateX(calc(100% - 78px)) translateY(-50%);
-        width: min(88vw, 380px);
-        z-index: 50;
-        transition: transform 220ms ease;
-      }
-      .mobile-contact[open] { transform: translateX(0) translateY(-50%); }
-
-      .mobile-contact summary {
-        list-style: none;
-        cursor: pointer;
-        user-select: none;
-
-        width: 78px;
-        margin-left: auto;
-        padding: 14px 10px;
-
-        background: rgba(44, 4, 4, 0.96);
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: 0 14px 30px rgba(0,0,0,0.45);
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
-      .mobile-contact summary::-webkit-details-marker { display: none; }
-
-      .mobile-contact summary span:first-child {
-        font-family: "Comforter", cursive;
-        font-size: 1.8rem;
-        line-height: 1;
-      }
-      .mobile-contact .chev { font-size: 1.2rem; opacity: 0.85; }
-
-      .mobile-contact .contact-box {
-        margin-top: 10px;
-        max-height: 70vh;
-        overflow: auto;
+        transform: none;
+        gap: 1.2rem;
+        align-content: start;
+        flex: 0 0 auto;
       }
 
       #work::before { display: none !important; }
       #work { padding-top: 2.5rem; }
+
+      /* ✅ Mobile: About and Contact stacked */
+      .about { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -559,7 +479,6 @@
   <div class="bg"></div>
   <div class="grain"></div>
 
-  <!-- ✅ Mobile scroll progress -->
   <div class="scroll-progress" aria-hidden="true"></div>
 
   <div class="page">
@@ -675,9 +594,8 @@
           </ul>
         </div>
 
-        <div id="contact"></div>
-        
-        <div class="contact-box desktop-contact">
+        <!-- ✅ FIX: id="contact" is on the real contact box (no empty div in the grid) -->
+        <div id="contact" class="contact-box">
           <h3 class="contact-title">Contact</h3>
           <p>For a commission, a collaboration or any question, you can reach me at:</p>
           <p style="margin-top: 0.6rem; font-weight: 600;">
@@ -694,41 +612,9 @@
         © 2025 Sophie – All artworks belong to the artist.
       </footer>
     </main>
-
-    <details class="mobile-contact">
-      <summary>
-        <span>Contact</span>
-        <span class="chev">‹</span>
-      </summary>
-
-      <div class="contact-box">
-        <h3 class="contact-title">Contact</h3>
-        <p>For a commission, a collaboration or any question, you can reach me at:</p>
-        <p style="margin-top: 0.6rem; font-weight: 600;">
-          <a href="mailto:sophieroseflower@gmail.com">sophieroseflower@gmail.com</a>
-        </p>
-        <p style="margin-top: 0.9rem; opacity: 0.85;">
-          What I need from you: A good quality image of the picture you would like me to produce.
-          Any other images of the same subject so that I can most accurately portray who or what they are in the best way.
-        </p>
-      </div>
-    </details>
   </div>
 
   <script>
-    // ✅ If user goes to #contact on mobile: open the drawer
-      function openMobileContactIfNeeded() {
-        const isMobile = window.matchMedia("(max-width: 768px)").matches;
-        if (!isMobile) return;
-
-        if (window.location.hash === "#contact") {
-          const details = document.querySelector(".mobile-contact");
-          if (details) details.open = true;
-        }
-      }
-
-      window.addEventListener("hashchange", openMobileContactIfNeeded);
-      openMobileContactIfNeeded();
     (function () {
       // Reveal on scroll
       const observer = new IntersectionObserver((entries, obs) => {
@@ -742,7 +628,7 @@
 
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-      // ✅ Mobile scroll progress bar
+      // Mobile scroll progress bar
       const progressEl = document.querySelector(".scroll-progress");
       function updateProgress() {
         const doc = document.documentElement;

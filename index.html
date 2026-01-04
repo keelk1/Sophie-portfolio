@@ -668,7 +668,9 @@
           </ul>
         </div>
 
-        <div id="contact" class="contact-box desktop-contact">
+        <div id="contact"></div>
+        
+        <div class="contact-box desktop-contact">
           <h3 class="contact-title">Contact</h3>
           <p>For a commission, a collaboration or any question, you can reach me at:</p>
           <p style="margin-top: 0.6rem; font-weight: 600;">
@@ -707,6 +709,19 @@
   </div>
 
   <script>
+    // ✅ If user goes to #contact on mobile: open the drawer
+      function openMobileContactIfNeeded() {
+        const isMobile = window.matchMedia("(max-width: 768px)").matches;
+        if (!isMobile) return;
+
+        if (window.location.hash === "#contact") {
+          const details = document.querySelector(".mobile-contact");
+          if (details) details.open = true;
+        }
+      }
+
+      window.addEventListener("hashchange", openMobileContactIfNeeded);
+      openMobileContactIfNeeded();
     (function () {
       // Reveal on scroll
       const observer = new IntersectionObserver((entries, obs) => {

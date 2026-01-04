@@ -443,6 +443,13 @@
       /* ✅ show progress bar only on mobile */
       .scroll-progress { display: block; height: 3px; }
 
+      .hero{
+        flex: 0 0 auto;        /* <- empêche le hero de remplir toute la hauteur */
+        align-content: start;  /* <- évite que les lignes du grid se "stretch" */
+        gap: 1.2rem;           /* <- réduit l’espace entre texte et photo */
+        transform: none;       /* optionnel : enlève le décalage vertical */
+      }
+      
       /* ✅ on mobile: header stays transparent, nav-inner becomes the framed bar */
       header {
         background: transparent;
